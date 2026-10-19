@@ -1,0 +1,22 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "extension-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "qa-copilot/extension",
+      "port": 5173,
+      "url": "http://localhost:5173"
+    },
+    {
+      "name": "backend",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--urls", "http://localhost:8080", "--environment", "Development"],
+      "cwd": "qa-copilot/backend",
+      "port": 8080,
+      "url": "http://localhost:8080",
+      "autoPort": false
+    }
+  ]
+}

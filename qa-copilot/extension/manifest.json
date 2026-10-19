@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "QA Copilot",
+  "version": "0.1.0",
+  "background": { "service_worker": "src/background/index.ts", "type": "module" },
+  "content_scripts": [
+    {
+      "matches": ["https://test-dms.targetdealer.com/*"],
+      "js": ["src/content/UserActionCollector.ts"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://test-dms.targetdealer.com/*"],
+      "js": ["src/content/SilentIssueNotifier.ts"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "debugger",
+    "tabCapture",
+    "offscreen",
+    "scripting",
+    "storage",
+    "activeTab",
+    "tabs",
+    "webNavigation",
+    "cookies"
+  ],
+  "host_permissions": [
+    "https://test-dms.targetdealer.com/*",
+    "http://localhost:8080/*"
+  ],
+  "commands": {
+    "capture-bug": {
+      "suggested_key": { "default": "Ctrl+Shift+B" },
+      "description": "Capture Bug — freeze the session and assemble evidence"
+    }
+  },
+  "action": { "default_popup": "src/popup/index.html" }
+}
